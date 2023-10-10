@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-const Thing = require('../models/Thing');
+const Anime = require('../models/Anime');
 
-exports.createThing = (req, res, next) => {
-  const thing = new Thing({
+exports.createAnime = (req, res, next) => {
+  const anime = new Anime({
     ...req.body
   });
-  thing.save().then(
+  anime.save().then(
     () => {
       res.status(201).json({
         message: 'Post saved successfully!'
@@ -21,12 +21,12 @@ exports.createThing = (req, res, next) => {
   );
 };
 
-exports.getOneThing = (req, res, next) => {
-  Thing.findOne({
+exports.getOneAnime = (req, res, next) => {
+  Anime.findOne({
     _id: req.params.id
   }).then(
-    (thing) => {
-      res.status(200).json(thing);
+    (anime) => {
+      res.status(200).json(anime);
     }
   ).catch(
     (error) => {
@@ -37,14 +37,14 @@ exports.getOneThing = (req, res, next) => {
   );
 };
 
-exports.modifyThing = (req, res, next) => {
-  const thing = new Thing({
+exports.modifyAnime = (req, res, next) => {
+  const anime = new Anime({
     ...req.body
   });
-  Thing.updateOne({_id: req.params.id}, thing).then(
+  Anime.updateOne({_id: req.params.id}, anime).then(
     () => {
       res.status(201).json({
-        message: 'Thing updated successfully!'
+        message: 'Anime updated successfully!'
       });
     }
   ).catch(
@@ -56,8 +56,8 @@ exports.modifyThing = (req, res, next) => {
   );
 };
 
-exports.deleteThing = (req, res, next) => {
-  Thing.deleteOne({_id: req.params.id}).then(
+exports.deleteAnime = (req, res, next) => {
+  Anime.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({
         message: 'Deleted!'
@@ -72,10 +72,10 @@ exports.deleteThing = (req, res, next) => {
   );
 };
 
-exports.getAllStuff = (req, res, next) => {
-  Thing.find().then(
-    (things) => {
-      res.status(200).json(things);
+exports.getAllAnime = (req, res, next) => {
+  Anime.find().then(
+    (animes) => {
+      res.status(200).json(animes);
     }
   ).catch(
     (error) => {

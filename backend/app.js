@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 
-const stuffRoutes = require('./routes/stuff');
+const animeRoutes = require('./routes/anime');
 const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb+srv://lpereiravaz:3crzFh3HBxyL4jMY@clusterssolututo.wkejqvs.mongodb.net/test?retryWrites=true&w=majority',
@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.use('/api/stuff', stuffRoutes);
+app.use('/api/anime', animeRoutes);
 app.use('/api/auth', userRoutes);
 
 module.exports = app;
