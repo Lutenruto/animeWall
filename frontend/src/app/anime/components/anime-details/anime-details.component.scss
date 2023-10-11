@@ -1,4 +1,16 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 mat-card {
+  padding: 0 20px;
+}
+
+h1 {
   text-align: center;
 }
 
