@@ -19,7 +19,7 @@ h2 {
   align-items: center;
 }
 
-.mat-mdc-form-field {
+.mat-form-field {
   width: 30%;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -27,4 +27,12 @@ h2 {
 
 mat-icon {
   color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
