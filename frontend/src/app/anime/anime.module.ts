@@ -8,6 +8,7 @@ import { AnimeRoutingModule } from './anime-routing.module';
 import { AnimesService } from './services/anime.service';
 import { AnimesResolver } from './resolvers/animes.resolver';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     AnimeRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   providers: [
     AnimesService,

@@ -1,20 +1,35 @@
 <div class="card">
   <mat-card>
-    <ng-container *ngIf="anime$ | async as anime">
-      <h1>{{ anime.title | titlecase }}</h1>
-      <img [src]="anime.imageUrl" [alt]="anime.title">
-      <div class="description">
-        <h2>
-          Description :
-        </h2>
-        <p>{{ anime.description }}</p>
+    <ng-container [formGroup]="monUpdate" *ngIf="anime">
+      <div class="content-wrapper">
+        <div class="input-section">
+          <mat-form-field class="full-width-input">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" [(ngModel)]="anime.title">
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <mat-label>Image URL</mat-label>
+            <input matInput formControlName="imageUrl" [(ngModel)]="anime.imageUrl">
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" [(ngModel)]="anime.description"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="image-preview-section">
+          <img [src]="anime.imageUrl" [alt]="anime.title" class="preview-image">
+        </div>
       </div>
     </ng-container>
+
     <mat-card-actions>
       <mat-spinner *ngIf="loading$ | async; else buttons"></mat-spinner>
       <ng-template #buttons>
         <div class="action-buttons">
-          <button mat-flat-button color="accent" (click)="onEdit()">MODIFY</button>
+          <button mat-flat-button color="accent" (click)="onSaveChanges()">SAVE CHANGES</button>
           <button mat-flat-button color="warn" (click)="onDelete()">DELETE</button>
         </div>
         <button mat-flat-button color="primary" (click)="onGoBack()">RETOUR</button>
