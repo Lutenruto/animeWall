@@ -1,5 +1,5 @@
 export class Anime {
-  _id!: number;
+  _id!: string;
   userId!: number;
   title!: string;
   imageUrl!: string;

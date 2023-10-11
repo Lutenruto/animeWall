@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { Observable, switchMap, tap } from 'rxjs';
+import { Observable, switchMap, take, tap } from 'rxjs';
 import { Anime } from '../../models/anime.model';
 import { AnimesService } from '../../services/anime.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-anime-details',
@@ -18,7 +18,8 @@ export class AnimeDetailsComponent implements OnInit {
   animeId!: string;
 
   constructor(private animesService: AnimesService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.initObservables();
@@ -39,10 +40,16 @@ export class AnimeDetailsComponent implements OnInit {
   }
 
   onDelete() {
-
+    this.anime$.pipe(
+      take(1),
+      tap(anime => {
+        this.animesService.deleteAnime(anime._id);
+        this.onGoBack();
+      })
+    ).subscribe();
   }
   
   onGoBack() {
-
+    this.router.navigateByUrl('/anime');
   }
 }
