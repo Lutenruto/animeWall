@@ -1,1 +1,20 @@
-<p>anime-list works!</p>
+<h2>Animes</h2>
+<div class="lst-anime">
+  <app-anime-list-item *ngFor="let anime of animes$ | async" [anime]=anime></app-anime-list-item>
+</div>
+<!-- <mat-card class="lst-anime">
+  <mat-card-title-group>
+    <mat-card-title>
+      Animes
+    </mat-card-title>
+  </mat-card-title-group>
+  <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+  <mat-nav-list *ngIf="animes$ | async as animes">
+    <div class="item">
+      <a *ngFor="let anime of animes" mat-list-item [routerLink]="anime._id.toString()">
+        <img [src]="anime.imageUrl" [alt]="anime.title" >
+        <h3 matLine>{{ anime.title }}</h3>
+      </a>
+    </div>
+  </mat-nav-list>
+</mat-card> -->

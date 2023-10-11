@@ -1,1 +1,16 @@
-<p>anime-list-item works!</p>
+<!-- <mat-card class="item">
+  <img mat-card-image *ngIf="anime.imageUrl as imageUrl" [src]="imageUrl" [alt]="anime.title">
+  <mat-card-title class="title">
+    <span>{{ anime.title | titlecase }}</span>
+  </mat-card-title>
+</mat-card> -->
+
+<mat-card class="item">
+  <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+  <mat-nav-list *ngIf="animes$ | async as animes">
+      <a  [routerLink]="anime._id.toString()">
+        <img [src]="anime.imageUrl" [alt]="anime.title" >
+        <h3 class="title" matLine>{{ anime.title }}</h3>
+      </a>
+  </mat-nav-list>
+</mat-card>
