@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environnements/environnement';
-import { tap } from 'rxjs';
+import { delay, tap } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
@@ -24,6 +24,7 @@ export class AuthService {
         tap(response => {
           this.cookieService.set('token', response.token);
           this.cookieService.set('userId', response.userId);
+          delay(1000);
           this.router.navigateByUrl('/anime');          
         })
       );
