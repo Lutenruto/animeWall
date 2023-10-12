@@ -6,7 +6,7 @@
 </mat-card> -->
 
 <mat-card class="item">
-  <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+  <div *ngIf="loading$ | async"></div>
   <mat-nav-list *ngIf="animes$ | async as animes">
       <a  [routerLink]="anime._id.toString()">
         <img [src]="anime.imageUrl" [alt]="anime.title" >
