@@ -69,6 +69,7 @@ export class AnimeDetailsComponent implements OnInit {
       tap(data => {
         if(data){
           console.log('Save');
+          this.animesService.getAnimesFromServer(true);
         } else {
           console.log('Error');
         }
@@ -88,5 +89,6 @@ export class AnimeDetailsComponent implements OnInit {
   
   onGoBack() {
     this.router.navigateByUrl('/anime');
+    // this.animesService.getAnimesFromServer(true);
   }
 }

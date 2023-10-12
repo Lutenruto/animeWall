@@ -28,8 +28,8 @@ export class AnimesService {
     this._loading$.next(loading);
   }
 
-  getAnimesFromServer() {
-    if (Date.now() - this.lastAnimesLoad <= 300000) {
+  getAnimesFromServer(refresh?: boolean) {
+    if ((refresh == false || refresh == undefined) && Date.now() - this.lastAnimesLoad <= 300000) {
       return;
     }
     this.setLoadingStatus(true);
