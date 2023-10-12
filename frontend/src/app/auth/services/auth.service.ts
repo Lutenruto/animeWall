@@ -32,7 +32,7 @@ export class AuthService {
   logout() {
     this.cookieService.delete('token');
     this.cookieService.delete('userId');
-    this.router.navigateByUrl('/anime');
+    this.router.navigateByUrl('/auth/login');
   }
 
   signup(email: string, password: string) {
