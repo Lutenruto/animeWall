@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  getToken() {
+    return this.cookieService.get('token');
+  }
+
   constructor(private http: HttpClient,
              private cookieService: CookieService,
              private router: Router) {}
@@ -19,7 +23,8 @@ export class AuthService {
       .pipe(
         tap(response => {
           this.cookieService.set('token', response.token);
-          this.cookieService.set('userId', response.userId);          
+          this.cookieService.set('userId', response.userId);
+          this.router.navigateByUrl('/anime');          
         })
       );
   }
@@ -27,7 +32,6 @@ export class AuthService {
   logout() {
     this.cookieService.delete('token');
     this.cookieService.delete('userId');
-    // Redirigez l'utilisateur vers la page de connexion ou la page d'accueil
     this.router.navigateByUrl('/anime');
   }
 

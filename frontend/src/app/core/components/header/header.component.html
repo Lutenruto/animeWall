@@ -3,6 +3,7 @@
   <ul>
     <li><a routerLink="/anime">Anime</a></li>
     <li><a routerLink="/anime/add">New Anime</a></li>
-    <li><a routerLink="/auth/login">Login</a></li>
+    <li *ngIf="!isLoggedIn"><a routerLink="/auth/login">Login</a></li>
+    <li *ngIf="isLoggedIn"><a (click)="authService.logout()">Logout</a></li>
   </ul>
 </mat-toolbar>
