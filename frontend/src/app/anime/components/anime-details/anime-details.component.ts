@@ -89,6 +89,5 @@ export class AnimeDetailsComponent implements OnInit {
   
   onGoBack() {
     this.router.navigateByUrl('/anime');
-    // this.animesService.getAnimesFromServer(true);
   }
 }

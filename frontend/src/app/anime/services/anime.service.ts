@@ -69,4 +69,9 @@ export class AnimesService {
     );
   }
 
+  addNewAnime(anime: Anime, userId: string): Observable<Anime> {
+    anime.userId = userId;
+    return this.http.post<Anime>(`${environment.apiUrl}/anime/`, anime);
+  }
+
 }

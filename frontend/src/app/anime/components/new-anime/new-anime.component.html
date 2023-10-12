@@ -1,1 +1,38 @@
-<p>new-anime works!</p>
+<div class="card">
+  <mat-card>
+    <ng-container [formGroup]="addAnimeForm">
+      <div class="content-wrapper">
+        <div class="input-section">
+          <mat-form-field class="full-width-input">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title">
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <mat-label>Image URL</mat-label>
+            <input matInput formControlName="imageUrl">
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="image-preview-section">
+          <img [src]="addAnimeForm.get('imageUrl')?.value" [alt]="addAnimeForm.get('title')?.value" class="preview-image">
+        </div>
+      </div>
+    </ng-container>
+
+    <mat-card-actions>
+      <mat-spinner *ngIf="loading$ | async; else buttons"></mat-spinner>
+      <ng-template #buttons>
+        <div class="action-buttons">
+          <button mat-flat-button color="accent" (click)="onAddAnime()">ADD ANIME</button>
+        </div>
+        <button mat-flat-button color="primary" (click)="onGoBack()">RETOUR</button>
+      </ng-template>
+    </mat-card-actions>
+  </mat-card>
+</div>
